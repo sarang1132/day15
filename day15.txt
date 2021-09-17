@@ -1,0 +1,59 @@
+create database organizationdb
+
+create table Salary
+(
+SlipNo int not null,
+Salary int not null
+)
+
+
+alter table Salary
+alter column SlipNo varchar(10)
+
+
+
+
+insert into Salary (SlipNo,Salary) values 
+('S001',50000),
+('S002',65000),
+('S003',70000)
+
+insert Salary values 
+('S004',72000),
+('S005', 75000)
+
+insert Salary values 
+('S005',77000)
+
+select * from Salary
+
+delete from Salary 
+where Salary=77000
+
+select * from Salary
+
+
+
+
+create table Employee
+(
+EmployeeNo varchar(10) not null constraint pkempno Primary key,
+slipno varchar(10) constraint fkslipno Foreign key references salary(slipno) not null,
+EmployeeName varchar(20) not null
+)
+
+
+
+insert into Employee values ('E001', 'S001', 'Sarang')
+
+insert into Employee values ('E002', 'S001', 'Adil')
+
+
+
+
+
+update Salary
+set Salary=68000
+where  SlipNo='S003'
+
+sp_rename 'Salary.SlipNo', 'Receipt', 'column'
